@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+
+<h1>멤버관리</h1>
+
+<div *ngIf="members">
+멤버가 없습니다.
+</div>
+
+<div *ngFor="let member of members">
+  이름 : {{member.name}}
+</div>
+
+<hr>
+
+<input #name/>
+<button (click)="addMember(name.value); name.value='' ">멤버 추가 </button>
