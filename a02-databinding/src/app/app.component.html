@@ -1,28 +1,52 @@
-<h1>
-  {{title}}
-</h1>
-
 <h1>Bindings</h1>
 <hr>
 
 <h3>단방향들..</h3>
 <div [ngClass]="test">
-  I'm One way binding
+  I'm One way binding. [ngClass]="앵귤러 변수명" 을 통한 단방향 바인딩
 </div>
-<div> 사실 나도 단방향이긴 해요...  {{title}}</div>
+<div> 사실 나도 단방향이긴 해요...  {{title}}  <= {{  "{{  }\}"   }}  을 통한 바인딩</div>
 <div>
-  이벤트 바인딩의 예 : <button (click)="evtBinding()">버튼입니당.</button>
+  이벤트 바인딩의 예  (click)="evtBinding()" : <button (click)="evtBinding()">버튼입니당.</button>
 </div>
 
 <h3>양방향들..</h3>
-양방향의 예 => : {{msg}} = <input [(ngModel)]="msg" /> <br/>
+양방향의 예 => {{msg}} = <input [(ngModel)]="msg" /> <br/>
 
 <h1>Template</h1>
 <hr>
 <h3>ngFor</h3>
 
+<div *ngFor="let name of namelist">
+  네임 : {{name}}
+</div>
 
 
 <h3>ngIf</h3>
+<div *ngIf="showing">
+  현재 showing 가 true 여서 나타나고 있습니다 (밑의 버튼과 연동 중..)
+</div>
+<div *ngIf="!showing">
+  현재 showing 가 false  여서 나타나고 있습니다. 원래는 *ngIf="someCondition; else falsyTemplate" 와 ng-template #falsyTemplate로 되긴 하는데 .. 이상하네요 ;;
+</div>
+
+<div *ngIf="showing; else falsyTemplate">
+  <h1>Condition Passed!</h1>
+</div>
+
+<ng-template #falsyTemplate>
+  <h1>Condition Failed!</h1>
+</ng-template>
+
+<hr>
 
 <h3>ngSwitch</h3>
+<div [ngSwitch]="showing">
+  <button *ngSwitchCase="true" (click)="showing=false">동작 안하게 하기</button>
+  <button *ngSwitchCase="false" (click)="showing=true">동작하게 하기</button>
+</div>
+
+<hr>
+<h1>그 외 </h1>
+<div [(ngStyle)]="myStyle">스타일 적용된 CSS</div>
+
